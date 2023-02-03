@@ -43,25 +43,42 @@ M.capabilities.textDocument.completion.completionItem = {
   },
 }
 
-lspconfig.sumneko_lua.setup {
+local default_options = {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
-
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { "vim" },
-      },
-      workspace = {
-        library = {
-          [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-          [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
-        },
-        maxPreload = 100000,
-        preloadFileSize = 10000,
-      },
-    },
+  flags = {
+    debounce_text_changes = 500,
+    allow_incremental_sync = false,
   },
 }
+
+local lsp_default_config = require("core.utils").load_config().lsp
+local servers = lsp_default_config.servers
+
+local install_lsp = function()
+  local opts
+
+  for server, enable in pairs(servers) do
+    if enable then
+      if server == 'tsserver' then
+        opts = vim.tbl_deep_extend('force', default_options, require('plugins.configs.lspconfigs.tsserver'))
+      elseif server == 'tailwindcss' then
+        opts = vim.tbl_deep_extend('force', default_options, require('plugins.configs.lspconfigs.tailwindcss'))
+      elseif server == 'volar' then
+        opts = vim.tbl_deep_extend('force', default_options, require('plugins.configs.lspconfigs.volar'))
+      elseif server == 'sumneko_lua' then
+        opts = vim.tbl_deep_extend('force', default_options, require('plugins.configs.lspconfigs.sumneko_lua'))
+      elseif server == 'jsonls' then
+        opts = vim.tbl_deep_extend('force', default_options, require('plugins.configs.lspconfigs.jsonls'))
+      else
+        opts = default_options
+      end
+
+      lspconfig[server].setup(opts)
+    end
+  end
+end
+
+install_lsp()
 
 return M

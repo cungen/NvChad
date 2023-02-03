@@ -203,6 +203,25 @@ local plugins = {
       require("core.utils").load_mappings "whichkey"
     end,
   },
+
+  ['b0o/schemastore.nvim'] = {
+    module = 'schemastore',
+  },
+
+  ["mhartington/formatter.nvim"] = {
+    event = 'BufWrite',
+    cmd = "Format",
+    config = function()
+      require('plugins.configs.formatter')
+    end,
+  },
+
+  ['folke/trouble.nvim'] = {
+    requires = "nvim-tree/nvim-web-devicons",
+    config = function()
+      require("trouble").setup({})
+    end,
+  },
 }
 
 -- Load all plugins
