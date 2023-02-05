@@ -180,7 +180,7 @@ M.lspconfig = {
       "lsp references",
     },
 
-    ["<leader>f"] = {
+    ["<leader>df"] = {
       function()
         vim.diagnostic.open_float()
       end,
@@ -208,7 +208,7 @@ M.lspconfig = {
       "diagnostic setloclist",
     },
 
-    ["<leader>fm"] = {
+    [<leader>Fm"] = {
       function()
         vim.lsp.buf.format { async = true }
       end,
@@ -243,7 +243,10 @@ M.nvimtree = {
 
   n = {
     -- toggle
-    ["<leader>e"] = { "<cmd> NvimTreeToggle <CR>", "toggle nvimtree" },
+    ["<C-e>"] = { "<cmd> NvimTreeToggle <CR>", "toggle nvimtree" },
+
+    -- focus
+    ["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "focus nvimtree" },
   },
 }
 
@@ -252,12 +255,12 @@ M.telescope = {
 
   n = {
     -- find
-    ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "find files" },
-    ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "find all" },
-    ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "live grep" },
-    ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "find buffers" },
-    ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "help page" },
-    ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "find oldfiles" },
+    ["<leader>f"] = { "<cmd> Telescope find_files <CR>", "find files" },
+    ["<leader>Fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "find all" },
+    ["<leader>Fw"] = { "<cmd> Telescope live_grep <CR>", "live grep" },
+    ["<leader>Fb"] = { "<cmd> Telescope buffers <CR>", "find buffers" },
+    ["<leader>Fh"] = { "<cmd> Telescope help_tags <CR>", "help page" },
+    ["<leader>Fo"] = { "<cmd> Telescope oldfiles <CR>", "find oldfiles" },
     ["<leader>tk"] = { "<cmd> Telescope keymaps <CR>", "show keys" },
 
     -- git
