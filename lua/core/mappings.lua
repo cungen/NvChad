@@ -208,7 +208,7 @@ M.lspconfig = {
       "diagnostic setloclist",
     },
 
-    [<leader>Fm"] = {
+    ["<leader>Fm"] = {
       function()
         vim.lsp.buf.format { async = true }
       end,
@@ -243,7 +243,7 @@ M.nvimtree = {
 
   n = {
     -- toggle
-    ["<C-e>"] = { "<cmd> NvimTreeToggle <CR>", "toggle nvimtree" },
+    ["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "toggle nvimtree" },
 
     -- focus
     ["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "focus nvimtree" },
