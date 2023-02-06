@@ -34,13 +34,14 @@ local plugins = {
     end,
   },
 
-  ["NvChad/nvterm"] = {
-    module = "nvterm",
+  ['voldikss/vim-floaterm'] = {
+    cmd = { 'FloatermNew', 'FloatermToggle' },
     config = function()
-      require "plugins.configs.nvterm"
+      require('plugins.configs.floaterm')
     end,
     setup = function()
-      require("core.utils").load_mappings "nvterm"
+      vim.g.floaterm_keymap_toggle = '<C-\\>'
+      require('core.utils').load_mappings "floaterm"
     end,
   },
 
