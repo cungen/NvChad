@@ -223,6 +223,12 @@ local plugins = {
       require("trouble").setup({})
     end,
   },
+  ["fgheng/winbar.nvim"] = {
+    after = "nvim-web-devicons",
+    config = function()
+      require "plugins.configs.winbar"
+    end,
+  },
 }
 
 -- Load all plugins
